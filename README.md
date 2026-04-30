@@ -27,6 +27,7 @@
 
 ```bash
 git clone https://github.com/b-re-w/cnu_ros_chachabot.git
+cd cnu_ros_chachabot
 ```
 
 ### Colcon Build
