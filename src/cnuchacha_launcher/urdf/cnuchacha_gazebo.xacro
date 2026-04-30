@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="cnuchacha_gazebo" params="prefix">
+
+    <!-- ros2_control plugin -->
+    <gazebo>
+      <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+        <parameters>$(find cnuchacha_launcher)/config/cnuchacha_controllers.yaml</parameters>
+      </plugin>
+    </gazebo>
+
+    <!-- Torso -->
+    <gazebo reference="${prefix}base_link">
+      <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <!-- Head -->
+    <gazebo reference="${prefix}head_link">
+      <material>Gazebo/White</material>
+    </gazebo>
+
+    <!-- Legs -->
+    <gazebo reference="${prefix}left_leg">
+      <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="${prefix}right_leg">
+      <material>Gazebo/White</material>
+    </gazebo>
+
+    <!-- Arms -->
+    <gazebo reference="${prefix}left_arm">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="${prefix}right_arm">
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+      <material>Gazebo/White</material>
+    </gazebo>
+
+    <!-- Nupjuki -->
+    <gazebo reference="${prefix}nupjuki_link">
+      <material>Gazebo/SkyBlue</material>
+    </gazebo>
+
+  </xacro:macro>
+
+</robot>

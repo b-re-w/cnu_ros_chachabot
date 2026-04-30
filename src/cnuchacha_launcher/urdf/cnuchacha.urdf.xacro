@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot name="cnuchacha" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="prefix" default="" />
+
+  <!-- Import cnuchacha macro -->
+  <xacro:include filename="$(find cnuchacha_description)/urdf/cnuchacha_description.urdf.xacro" />
+
+  <!-- Import ros2_control description -->
+  <xacro:include filename="$(find cnuchacha_launcher)/urdf/cnuchacha_ros2_control.xacro" />
+  <xacro:cnuchacha_ros2_control name="CNUChacha" prefix="$(arg prefix)" />
+
+  <!-- Import Gazebo Classic definitions + plugin -->
+  <xacro:include filename="$(find cnuchacha_launcher)/urdf/cnuchacha_gazebo.xacro" />
+  <xacro:cnuchacha_gazebo prefix="$(arg prefix)"/>
+
+
+</robot>

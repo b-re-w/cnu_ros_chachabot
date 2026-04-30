@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot name="cnuchacha" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="prefix" default="" />
+
+  <!-- Import materials (colors) -->  
+  <xacro:include filename="$(find cnuchacha_description)/urdf/cnuchacha_materials.xacro" />
+
+  <!-- Import cnuchacha macro -->
+  <xacro:include filename="$(find cnuchacha_description)/urdf/cnuchacha_macro.xacro" />
+
+  <!-- Used for fixing robot -->
+  <link name="world"/>
+
+  <xacro:cnuchacha parent="world" prefix="$(arg prefix)">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </xacro:cnuchacha>
+
+</robot>

@@ -1,0 +1,28 @@
+# Controller Manager Configuration
+controller_manager:
+  # ROS parameters specific to the controller manager
+  ros__parameters:
+    # Update rate for the controller manager (Hz)
+    # This determines how often the controllers are updated
+    update_rate: 10
+
+    # Set Joint State Broadcaster
+    # This controller publishes the state of all joints to ROS topics
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    # Set Forward Position Controller
+    # This controller allows direct position control of specified joints
+    forward_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+# Forward Position Controller Configuration
+forward_position_controller:
+  ros__parameters:
+    # List of joints to be controlled by this controller
+    joints:
+      - joint1
+      - joint2
+    # Type of command interface (position, velocity, or effort)
+    interface_name: position
+
