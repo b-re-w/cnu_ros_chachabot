@@ -22,6 +22,13 @@
         </command_interface>
         <state_interface name="position"/>
       </joint>
+      <joint name="${prefix}nupjuki_joint">
+        <command_interface name="position">
+          <param name="min">-3.14</param>
+          <param name="max">3.14</param>
+        </command_interface>
+        <state_interface name="position"/>
+      </joint>
     </ros2_control>
 
   </xacro:macro>

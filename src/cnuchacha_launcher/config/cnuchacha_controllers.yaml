@@ -26,3 +26,10 @@ forward_position_controller:
     # Type of command interface (position, velocity, or effort)
     interface_name: position
 
+forward_position_controller:
+  ros__parameters:
+    joints:
+      - joint1
+      - joint2
+      - nupjuki_joint
+    interface_name: position

@@ -12,12 +12,17 @@
 
     <!-- Torso -->
     <gazebo reference="${prefix}base_link">
-      <material>Gazebo/Blue</material>
+      <material>Gazebo/Black</material>
     </gazebo>
 
     <!-- Head -->
     <gazebo reference="${prefix}head_link">
       <material>Gazebo/White</material>
+    </gazebo>
+
+    <!-- Hat Brim -->
+    <gazebo reference="${prefix}hat_brim_link">
+      <material>Gazebo/Blue</material>
     </gazebo>
 
     <!-- Legs -->
@@ -26,6 +31,12 @@
     </gazebo>
     <gazebo reference="${prefix}right_leg">
       <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="${prefix}left_foot">
+      <material>Gazebo/Blue</material>
+    </gazebo>
+    <gazebo reference="${prefix}right_foot">
+      <material>Gazebo/Blue</material>
     </gazebo>
 
     <!-- Arms -->
@@ -42,7 +53,13 @@
 
     <!-- Nupjuki -->
     <gazebo reference="${prefix}nupjuki_link">
-      <material>Gazebo/SkyBlue</material>
+      <visual>
+        <material>
+          <ambient>0 1 1 1</ambient>
+          <diffuse>0 1 1 1</diffuse>
+          <specular>0 0.1 0.1 1</specular>
+        </material>
+      </visual>
     </gazebo>
 
   </xacro:macro>
