@@ -30,9 +30,16 @@ class CnuChachaController(Node):
 
         # 넙죽이 회전 설정
         self.nupjuki_pos = 0.0
-        self.nupjuki_target = 1.57  # 90도
-        self.nupjuki_direction = 1  # 1: 오른쪽, -1: 왼쪽
-        self.nupjuki_speed = 0.2   # 회전 속도
+        self.nupjuki_target = 1.57
+        self.nupjuki_direction = 1
+        self.nupjuki_speed = 0.2
+
+        # 다리 설정
+        self.left_leg_pos = 0.0
+        self.right_leg_pos = 0.0
+        self.leg_target = 1.57      # 앞으로 90도 접기
+        self.leg_speed = 0.05       # 접는 속도
+        self.leg_folded = False     # 다리 접힘 완료 여부
 
 
     def update_joint_states(self):
@@ -63,8 +70,19 @@ class CnuChachaController(Node):
             self.nupjuki_direction = 1
             self.get_logger().info('Nupjuki: 왼쪽 끝, 반대 방향으로')
 
-        # joint1, joint2, nupjuki 합쳐서 publish
-        self.command.data = self.current_positions + [self.nupjuki_pos]
+        # 다리 접기 로직 (시작하자마자 앞으로 접기)
+        if not self.leg_folded:
+            self.left_leg_pos += self.leg_speed
+            self.right_leg_pos += self.leg_speed
+
+            if self.left_leg_pos >= self.leg_target:
+                self.left_leg_pos = self.leg_target
+                self.right_leg_pos = self.leg_target
+                self.leg_folded = True
+                self.get_logger().info('다리 접기 완료')
+
+        # joint1, joint2, nupjuki, left_leg, right_leg 합쳐서 publish
+        self.command.data = self.current_positions + [self.nupjuki_pos, self.left_leg_pos, self.right_leg_pos]
         self.publisher_.publish(self.command)
         self.get_logger().info(f'Publishing : {self.command.data}')
 

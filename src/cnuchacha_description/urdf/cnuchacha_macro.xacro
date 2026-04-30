@@ -93,10 +93,13 @@
     </link>
 
     <!-- Legs -->
-    <joint name="${prefix}left_leg_joint" type="fixed">
+    <joint name="${prefix}left_leg_joint" type="revolute">
       <parent link="${prefix}base_link"/>
       <child link="${prefix}left_leg"/>
       <origin xyz="0 ${body_w/4} ${leg_l}" rpy="0 0 0"/>
+      <axis xyz="0 -1 0"/>
+      <dynamics damping="0.7"/>
+      <limit effort="100" velocity="1.0" lower="-1.57" upper="1.57"/>
     </joint>
     <link name="${prefix}left_leg">
       <visual>
@@ -115,10 +118,13 @@
       </inertial>
     </link>
 
-    <joint name="${prefix}right_leg_joint" type="fixed">
+    <joint name="${prefix}right_leg_joint" type="revolute">
       <parent link="${prefix}base_link"/>
       <child link="${prefix}right_leg"/>
       <origin xyz="0 ${-body_w/4} ${leg_l}" rpy="0 0 0"/>
+      <axis xyz="0 -1 0"/>
+      <dynamics damping="0.7"/>
+      <limit effort="100" velocity="1.0" lower="-1.57" upper="1.57"/>
     </joint>
     <link name="${prefix}right_leg">
       <visual>

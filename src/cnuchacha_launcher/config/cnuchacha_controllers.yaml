@@ -33,3 +33,13 @@ forward_position_controller:
       - joint2
       - nupjuki_joint
     interface_name: position
+
+forward_position_controller:
+  ros__parameters:
+    joints:
+      - joint1
+      - joint2
+      - nupjuki_joint
+      - left_leg_joint
+      - right_leg_joint
+    interface_name: position
